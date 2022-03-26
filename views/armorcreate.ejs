@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <%- include("../partials/header") %>
+  <body>
+    <div class="homepageWrap">
+      <div class="displayPanel">
+        <div class="formWrap">
+          <form class="weaponForm" method="POST" action=" ">
+            <%- include("../partials/form/name") %> <%-
+            include("../partials/form/value") %> <%-
+            include("../partials/form/weight") %> <%-
+            include("../partials/form/condition") %>
+            <label for="effects">Effects:</label>
+            <input type="text" id="effects" name="effects" maxlength="25"
+            required placeholder="Ex: Charisma + 5" <%- typeof dataItem !=
+            "undefined" && "value=" %> "<%= typeof dataItem != "undefined" &&
+            dataItem.effects %>" />
+
+            <input type="submit" value="Submit" class="submitButton" />
+          </form>
+        </div>
+        <%- include("../partials/homeLink") %>
+      </div>
+    </div>
+  </body>
+  <%- include("../scripts/eventScript") %>
+</html>

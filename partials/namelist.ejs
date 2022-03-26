@@ -1,0 +1,11 @@
+<div class="namelist">
+  <% data.forEach((item)=> { %> 
+
+  <div class="listItem <%= selected.get_id === item.get_id  ? 'listItemClicked' : ""%>">
+    <div
+      class="linkOverlay <%= selected.get_id === item.get_id  ? 'selected' : "" %>"
+    ></div>
+    <a href="<%= item.url %>"><%=item.name %> </a>
+  </div>
+  <% }) %>
+</div>

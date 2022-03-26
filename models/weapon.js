@@ -14,5 +14,8 @@ const WeaponSchema = new Schema({
 WeaponSchema.virtual("url").get(function () {
   return "/inventory/weapon/" + this._id;
 });
+WeaponSchema.virtual("get_id").get(function () {
+  return this._id.toString();
+});
 
 module.exports = mongoose.model("Weapon", WeaponSchema);

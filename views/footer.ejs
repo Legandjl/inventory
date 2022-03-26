@@ -1,0 +1,33 @@
+<div class="footer">
+  <div class="link" id="weapon">
+    <div class="linkOverlay <%= type === "weapon" ? 'selected' : "" %>"></div>
+    <a href="/inventory/weapons/">Weapons</a>
+  </div>
+  <div class="link">
+    <div class="linkOverlay <%= type === "armor" ? 'selected' : "" %>"></div>
+    <a href="/inventory/armor/" id="armor">Armor</a>
+  </div>
+  <div class="link">
+    <div class="linkOverlay <%= type === "aid" ? 'selected' : "" %>"></div>
+    <a href="/inventory/aid/" id="aid">Aid</a>
+  </div>
+  <div class="link">
+    <div class="linkOverlay <%= type === "misc" ? 'selected' : "" %>"></div>
+    <a href="/inventory/misc/" id="misc">Misc</a>
+
+  </div>
+</div>
+
+<script> /*
+  let selected = "weapon";
+  document.querySelectorAll(".link").forEach((item) => {
+    item.addEventListener("mouseenter", (e) => {
+      //handle click
+      e.target.children[0].classList.add("selected");
+    });
+
+    item.addEventListener("mouseleave", (e) => {
+      e.target.children[0].classList.remove("selected");
+    });
+  }); */
+</script>
