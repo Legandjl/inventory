@@ -2,7 +2,6 @@ const Armor = require("../models/armor");
 const async = require("async");
 const { body, validationResult } = require("express-validator");
 const category = require("../models/category");
-const req = require("express/lib/request");
 
 // Display list of all Armor.
 exports.armor_list = async (req, res, next) => {

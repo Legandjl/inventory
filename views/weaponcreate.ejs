@@ -8,14 +8,9 @@
           <form class="weaponForm" method="POST" action=" ">
             <%- include("../partials/form/name") %> <%-
             include("../partials/form/value") %> <%-
-            include("../partials/form/weight") %>
-
-            <label for="damage">Damage:</label>
-            <input type="number" id="damage" name="damage" min="1" max="999"
-            required placeholder="1 - 999" <%- typeof dataItem != "undefined" &&
-            "value=" %> <%= typeof dataItem != "undefined" && dataItem.dam %> />
-            <%- include("../partials/form/condition") %>
-
+            include("../partials/form/weight") %> <%-
+            include("../partials/form/damage") %> <%-
+            include("../partials/form/condition") %>
             <input type="submit" value="Submit" class="submitButton" />
           </form>
         </div>

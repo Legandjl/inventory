@@ -2,7 +2,6 @@ const Misc = require("../models/misc");
 const async = require("async");
 const { body, validationResult } = require("express-validator");
 const category = require("../models/category");
-const misc = require("../models/misc");
 
 // Display list of all misc items.
 exports.misc_list = async (req, res, next) => {

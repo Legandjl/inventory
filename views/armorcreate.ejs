@@ -9,13 +9,8 @@
             <%- include("../partials/form/name") %> <%-
             include("../partials/form/value") %> <%-
             include("../partials/form/weight") %> <%-
-            include("../partials/form/condition") %>
-            <label for="effects">Effects:</label>
-            <input type="text" id="effects" name="effects" maxlength="25"
-            required placeholder="Ex: Charisma + 5" <%- typeof dataItem !=
-            "undefined" && "value=" %> "<%= typeof dataItem != "undefined" &&
-            dataItem.effects %>" />
-
+            include("../partials/form/condition") %> <%-
+            include("../partials/form/effects") %>
             <input type="submit" value="Submit" class="submitButton" />
           </form>
         </div>

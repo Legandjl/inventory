@@ -382,3 +382,7 @@ input {
   margin-top: 0px;
   font-size: 1.1em;
 }
+
+.delConf:hover {
+  cursor: pointer;
+}
