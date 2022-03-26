@@ -15,4 +15,7 @@ AidSchema.virtual("url").get(function () {
   return "/inventory/aid/" + this._id;
 });
 
+AidSchema.virtual("get_id").get(function () {
+  return this._id.toString();
+});
 module.exports = mongoose.model("Aid", AidSchema);

@@ -15,4 +15,8 @@ ArmorSchema.virtual("url").get(function () {
   return "/inventory/armor/" + this._id;
 });
 
+ArmorSchema.virtual("get_id").get(function () {
+  return this._id.toString();
+});
+
 module.exports = mongoose.model("Armor", ArmorSchema);

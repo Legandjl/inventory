@@ -1,0 +1,12 @@
+<script>
+  document.querySelectorAll(".listItem").forEach((item) => {
+    item.addEventListener("mouseenter", (e) => {
+      //handle click
+      e.target.children[0].classList.add("hovered");
+    });
+
+    item.addEventListener("mouseleave", (e) => {
+      e.target.children[0].classList.remove("hovered");
+    });
+  });
+</script>

@@ -13,4 +13,7 @@ MiscSchema.virtual("url").get(function () {
   return "/inventory/misc/" + this._id;
 });
 
+MiscSchema.virtual("get_id").get(function () {
+  return this._id.toString();
+});
 module.exports = mongoose.model("Misc", MiscSchema);

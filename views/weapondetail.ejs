@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <%- include("../partials/header") %>
+  <body>
+    <div class="homepageWrap">
+      <div class="displayPanel">
+        <%- include("../partials/createLink") %>
+        <div class="editWrap">
+          <%- !del ? include("../partials/edit") : "" %><%- !del ?
+          include("../partials/delete") : include("../partials/deleteConfirm")
+          %>
+        </div>
+        <%- include("../partials/namelist") %> <%- include('footer'); %>
+        <div class="detailPanel">
+          <%- include("../partials/weapondisplaydetail") %>
+        </div>
+      </div>
+    </div>
+  </body>
+  <%- include("../scripts/eventScript") %>
+</html>
