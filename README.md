@@ -2,7 +2,7 @@
 
 #Overview
 
-I created this app to gain an understanding of the basics of Express MongoDB, and in the MVC development pattern. 
+I created this app to gain an understanding of the basics of Express MongoDB, and to practice development using the MVC development pattern. 
 
 Users can create, read, update and delete items. The styling is based on the pipboy from the Fallout games. I didn't spend too much time on the front end side as I plan to move towards making RESTful apps, and I intend to remake the frontend of this app using React as a future learning exercise. 
 
