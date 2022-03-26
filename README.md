@@ -8,9 +8,9 @@ Users can create, read, update and delete items. The styling is based on the pip
 
 #Technologies used
 
-Ejs
-Express
-Mongoose
-Node JS
+Ejs,
+Express,
+Mongoose,
+Node JS,
 
 
