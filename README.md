@@ -11,6 +11,6 @@ Users can create, read, update and delete items. The styling is based on the pip
 Ejs,
 Express,
 Mongoose,
-Node JS,
+Node JS
 
 
