@@ -2,6 +2,7 @@ const Aid = require("../models/aid");
 const async = require("async");
 const { body, validationResult } = require("express-validator");
 const category = require("../models/category");
+const Password = require("../models/password");
 
 // Display list of all aid items.
 exports.aid_list = async (req, res, next) => {
@@ -116,11 +117,20 @@ exports.aid_delete_get = async (req, res, next) => {
 // Handle aid item delete on POST.
 exports.aid_delete_post = async (req, res, next) => {
   try {
-    await Aid.findByIdAndRemove(req.params.id);
+    if (
+      await Password.exists({
+        pwd: req.body.password,
+      })
+    ) {
+      await Aid.findByIdAndRemove(req.params.id);
+      res.redirect("/inventory/aid");
+    } else {
+      res.redirect(`/inventory/aid/${req.params.id}`);
+    }
   } catch (e) {
+    console.log("error");
     next(e);
   }
-  res.redirect("/inventory/aid");
 };
 
 // Display aid item update form on GET.

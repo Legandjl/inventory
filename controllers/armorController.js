@@ -2,6 +2,7 @@ const Armor = require("../models/armor");
 const async = require("async");
 const { body, validationResult } = require("express-validator");
 const category = require("../models/category");
+const Password = require("../models/password");
 
 // Display list of all Armor.
 exports.armor_list = async (req, res, next) => {
@@ -117,11 +118,20 @@ exports.armor_delete_get = async (req, res, next) => {
 // Handle Armor delete on POST.
 exports.armor_delete_post = async (req, res, next) => {
   try {
-    await Armor.findByIdAndRemove(req.params.id);
+    if (
+      await Password.exists({
+        pwd: req.body.password,
+      })
+    ) {
+      await Armor.findByIdAndRemove(req.params.id);
+      res.redirect("/inventory/armor");
+    } else {
+      res.redirect(`/inventory/armor/${req.params.id}`);
+    }
   } catch (e) {
+    console.log("error");
     next(e);
   }
-  res.redirect("/inventory/armor");
 };
 
 // Display Armor update form on GET.

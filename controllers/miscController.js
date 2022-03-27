@@ -1,4 +1,5 @@
 const Misc = require("../models/misc");
+const Password = require("../models/password");
 const async = require("async");
 const { body, validationResult } = require("express-validator");
 const category = require("../models/category");
@@ -102,12 +103,22 @@ exports.misc_delete_get = async (req, res, next) => {
 
 // Handle misc item delete on POST.
 exports.misc_delete_post = async (req, res, next) => {
+  console.log(req.body.password);
   try {
-    await Misc.findByIdAndRemove(req.params.id);
+    if (
+      await Password.exists({
+        pwd: req.body.password,
+      })
+    ) {
+      await Misc.findByIdAndRemove(req.params.id);
+      res.redirect("/inventory/misc");
+    } else {
+      res.redirect(`/inventory/misc/${req.params.id}`);
+    }
   } catch (e) {
+    console.log("error");
     next(e);
   }
-  res.redirect("/inventory/misc");
 };
 
 // Display misc item update form on GET.
