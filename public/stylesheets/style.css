@@ -363,14 +363,16 @@ input {
 }
 
 .delForm {
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 150px;
+  grid-template-columns: auto auto auto auto;
+
   align-items: center;
   align-content: center;
   justify-content: center;
   justify-items: center;
   text-shadow: 0 0 5px #eec051;
+  grid-gap: 10px;
 }
 
 .delConf {
@@ -385,4 +387,7 @@ input {
 
 .delConf:hover {
   cursor: pointer;
+}
+.password {
+  width: 90px;
 }

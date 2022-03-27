@@ -2,6 +2,7 @@ const Weapon = require("../models/weapon");
 const async = require("async");
 const { body, validationResult } = require("express-validator");
 const category = require("../models/category");
+const Password = require("../models/password");
 
 // Display list of all weapon items.
 exports.weapon_list = async (req, res, next) => {
@@ -116,11 +117,20 @@ exports.weapon_delete_get = async (req, res, next) => {
 // Handle weapon item delete on POST.
 exports.weapon_delete_post = async (req, res, next) => {
   try {
-    await Weapon.findByIdAndRemove(req.params.id);
+    if (
+      await Password.exists({
+        pwd: req.body.password,
+      })
+    ) {
+      await Weapon.findByIdAndRemove(req.params.id);
+      res.redirect("/inventory/weapons");
+    } else {
+      res.redirect(`/inventory/weapon/${req.params.id}`);
+    }
   } catch (e) {
+    console.log("error");
     next(e);
   }
-  res.redirect("/inventory/weapons");
 };
 
 // Display weapon item update form on GET.

@@ -50,7 +50,7 @@ function armorCreate(name, val, weight, condition, effects, category, cb) {
       cb(err, null);
       return;
     }
-    console.log("New Author: " + armor);
+
     armors.push(armor);
     cb(null, armor);
   });
