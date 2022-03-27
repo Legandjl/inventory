@@ -184,11 +184,18 @@ exports.weapon_update_post = [
       category: cat,
       _id: req.params.id,
     });
+
     if (!errors.isEmpty()) {
       res.render("weaponcreate", { title: "Add Weapon" });
     } else {
       try {
-        await Weapon.findByIdAndUpdate(req.params.id, weapon);
+        if (
+          await Password.exists({
+            pwd: req.body.password,
+          })
+        ) {
+          await Weapon.findByIdAndUpdate(req.params.id, weapon);
+        }
         res.redirect(weapon.url);
       } catch (e) {
         next(e);

@@ -164,7 +164,13 @@ exports.misc_update_post = [
       res.render("misccreate", { title: "Add Misc" });
     } else {
       try {
-        await Misc.findByIdAndUpdate(req.params.id, misc);
+        if (
+          await Password.exists({
+            pwd: req.body.password,
+          })
+        ) {
+          await Misc.findByIdAndUpdate(req.params.id, misc);
+        }
         res.redirect(misc.url);
       } catch (e) {
         next(e);

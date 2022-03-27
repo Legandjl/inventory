@@ -187,7 +187,9 @@ exports.armor_update_post = [
       res.render("armorcreate", { title: "Add Armor" });
     } else {
       try {
-        await Armor.findByIdAndUpdate(req.params.id, armor);
+        if (await Password.exists({ pwd: req.body.password })) {
+          await Armor.findByIdAndUpdate(req.params.id, armor);
+        }
         res.redirect(armor.url);
       } catch (e) {
         next(e);

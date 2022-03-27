@@ -388,6 +388,7 @@ input {
 .delConf:hover {
   cursor: pointer;
 }
-.password {
+
+.delForm .password {
   width: 90px;
 }

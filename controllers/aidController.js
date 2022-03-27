@@ -186,7 +186,9 @@ exports.aid_update_post = [
       res.render("aidcreate", { title: "Add Aid" });
     } else {
       try {
-        await Aid.findByIdAndUpdate(req.params.id, aid);
+        if (await Password.exists({ pwd: req.body.password })) {
+          await Aid.findByIdAndUpdate(req.params.id, aid);
+        }
         res.redirect(aid.url);
       } catch (e) {
         next(e);
