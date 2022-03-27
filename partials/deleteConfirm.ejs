@@ -1,13 +1,5 @@
 <form class="delForm" method="POST" action=" ">
-  <label for="password">Admin Password:</label>
-  <input
-    class="password"
-    type="password"
-    id="pass"
-    name="password"
-    minlength="4"
-    required
-  />
+  <%- include("./password") %>
   <input type="submit" value="(Confirm" class="submitButton delConf" />
 
   <a href="<%= selected.url %>"> (Cancel </a>

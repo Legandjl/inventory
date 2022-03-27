@@ -10,7 +10,8 @@
             include("../partials/form/value") %> <%-
             include("../partials/form/weight") %> <%-
             include("../partials/form/damage") %> <%-
-            include("../partials/form/condition") %>
+            include("../partials/form/condition") %> <%- typeof dataItem !=
+            "undefined" ? include("../partials/password") : ""%>
             <input type="submit" value="Submit" class="submitButton" />
           </form>
         </div>

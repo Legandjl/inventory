@@ -13,7 +13,9 @@
             <input type="text" id="tag" name="tag" maxlength="4" required
             placeholder="Ex: MED (Max length = 4)" <%- typeof dataItem !=
             "undefined" && "value=" %> "<%= typeof dataItem != "undefined" &&
-            dataItem.tag %>" /> <%- include("../partials/form/effects") %>
+            dataItem.tag %>" /> <%- include("../partials/form/effects") %> <%-
+            typeof dataItem != "undefined" ? include("../partials/password") :
+            ""%>
             <input type="submit" value="Submit" class="submitButton" />
           </form>
         </div>
