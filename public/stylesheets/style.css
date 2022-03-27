@@ -158,8 +158,8 @@ body {
   grid-gap: 15px;
 
   justify-self: center;
-  width: 1000px;
-  height: 550px;
+  width: 75em;
+  height: 40em;
   box-shadow: 0 0 5px #eec051;
 }
 .footer {
@@ -177,8 +177,8 @@ body {
 .link,
 .homeLink {
   background-color: #38352b;
-  height: 50px;
-  width: 120px;
+  height: 4em;
+  width: 8.5em;
   border: solid 2px #eec051;
   position: relative;
   display: grid;
@@ -234,7 +234,7 @@ p {
 
 .namelist {
   display: grid;
-  height: 400px;
+  height: 35em;
   grid-auto-rows: min-content;
 
   overflow-y: scroll;
@@ -255,8 +255,8 @@ p {
   justify-items: center;
   justify-content: center;
   grid-template-columns: 1fr 1fr 1fr;
-  max-width: 400px;
-  max-height: 400px;
+  width: 30em;
+  height: 30em;
   align-self: center;
   justify-self: center;
   grid-gap: 20px;
