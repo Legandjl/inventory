@@ -3,19 +3,18 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
 var indexRouter = require("./routes/index");
 const inventoryRouter = require("./routes/inventory");
-
 var app = express();
+require("dotenv").config();
 
 //
 
 //Set up mongoose connection
 var mongoose = require("mongoose");
 
-var mongoDB =
-  "mongodb+srv://dlegan:9114@cluster0.sm9vk.mongodb.net/inventory?retryWrites=true&w=majority";
+var mongoDB = process.env.DB;
+
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
