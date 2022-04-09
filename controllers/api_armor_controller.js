@@ -74,6 +74,16 @@ exports.armor_create_post = [
   },
 ];
 
+exports.armor_delete_post = async (req, res, next) => {
+  try {
+    await Armor.findByIdAndRemove(req.params.id);
+    return res.status(200).json();
+  } catch (e) {
+    console.log("error");
+    return res.status(400).json({ error: "Armor could not be removed" });
+  }
+};
+
 /*
 // Handle weapon item update on POST.
 exports.weapon_update_put = [
