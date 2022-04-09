@@ -24,7 +24,7 @@ router.get("/armor", armorController.armor);
 
 router.get("/armor/:id", armorController.armor_detail);
 
-router.delete("/armor/:id", armorController.armor_detail);
+router.delete("/armor/:id", armorController.armor_delete_post);
 
 // misc CRUD
 
