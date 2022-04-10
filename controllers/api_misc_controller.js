@@ -24,3 +24,13 @@ exports.misc_detail = async (req, res, next) => {
     return res.status(404).json({ error: e });
   }
 };
+
+exports.misc_delete_post = async (req, res, next) => {
+  try {
+    await Misc.findByIdAndRemove(req.params.id);
+    return res.status(200).json();
+  } catch (e) {
+    console.log("error");
+    return res.status(400).json({ error: "Misc could not be removed" });
+  }
+};
