@@ -32,18 +32,14 @@ router.get("/misc", miscController.misc);
 
 router.get("/misc/:id", miscController.misc_detail);
 
+router.delete("/misc/:id", miscController.misc_delete_post);
+
 // aid CRUD
 
 router.get("/aid", aidController.aid);
 
 router.get("/aid/:id", aidController.aid_detail);
 
-/*
-router.post("/armor/", armorController.armor_create_post);
-
-router.put("/armor/:id", armorController.armor_update_put);
-
-router.delete("/armor/:id", armorController.armor_delete_post);
-*/
+router.delete("/aid/:id", aidController.aid_delete_post);
 
 module.exports = router;
