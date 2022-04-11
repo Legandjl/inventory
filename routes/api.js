@@ -12,7 +12,7 @@ router.get("/weapons", weaponController.weapons);
 
 router.get("/weapons/:id", weaponController.weapon_detail);
 
-router.post("/weapons/", weaponController.weapon_create_post);
+router.post("/weapons", weaponController.weapon_create_post);
 
 router.put("/weapons/:id", weaponController.weapon_update_put);
 

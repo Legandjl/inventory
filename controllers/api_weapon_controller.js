@@ -4,6 +4,7 @@ const { body, validationResult } = require("express-validator");
 const Category = require("../models/category");
 
 exports.weapons = async (req, res, next) => {
+  console.log("sending");
   try {
     const weapon_data = await Weapon.find({});
     res.send(weapon_data);
@@ -62,13 +63,13 @@ exports.weapon_create_post = [
       category: cat,
     });
     if (!errors.isEmpty()) {
-      res.send(errors);
+      res.json(errors);
     } else {
       try {
         await weapon.save();
-        res.send({ weapon: weapon, message: "Weapon created" });
+        res.send({ data: weapon, message: "Weapon created" });
       } catch (e) {
-        res.send(e);
+        res.json({ error: e.message });
       }
     }
   },
