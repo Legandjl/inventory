@@ -69,7 +69,7 @@ exports.weapon_create_post = [
         await weapon.save();
         res.send({ data: weapon, message: "Weapon created" });
       } catch (e) {
-        res.json({ error: e.message });
+        res.json({ error: e });
       }
     }
   },

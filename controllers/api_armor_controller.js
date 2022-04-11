@@ -84,9 +84,8 @@ exports.armor_delete_post = async (req, res, next) => {
   }
 };
 
-/*
-// Handle weapon item update on POST.
-exports.weapon_update_put = [
+// Handle weapon item create on POST.
+exports.armor_create_post = [
   body("name", "name must be specified").trim().isLength({ min: 1 }).escape(),
   body("val", "val must be specified and in the range 1 - 9999")
     .trim()
@@ -98,52 +97,28 @@ exports.weapon_update_put = [
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 999 })
     .escape(),
-  body("condition", "condition must be specified and in the range 1 - 99")
-    .trim()
-    .isLength({ min: 1 })
-    .isInt({ min: 1, max: 99 })
-    .escape(),
 
-  body("damage", "damage must be specified and in the range 1 - 999")
-    .trim()
-    .isLength({ min: 1 })
-    .isInt({ min: 1, max: 99 })
-    .escape(),
-
-  async (req, res, next) => {
+  async (req, res) => {
     const errors = validationResult(req);
-    const cat = await Category.findOne({ name: "Weapons" });
-    const weapon = new Weapon({
+    const cat = await Category.findOne({ name: "Armor" });
+    const armor = new Armor({
       name: req.body.name,
       val: req.body.val,
       weight: req.body.weight,
-      dam: req.body.damage,
-      condition: req.body.condition, //genre is an array of genre ids
+      effects: req.body.effects, //genre is an array of genre ids
+      condition: req.body.condition,
       category: cat,
       _id: req.params.id,
     });
-
     if (!errors.isEmpty()) {
-      res.send(errors);
+      res.json(errors);
     } else {
       try {
-        await Weapon.findByIdAndUpdate(req.params.id, weapon);
-        return res.status(200).json({ id: req.params.id });
+        await armor.save();
+        res.send({ data: armor, message: "Armor created" });
       } catch (e) {
-        next(e);
+        res.json({ error: e });
       }
     }
   },
 ];
-
-// Handle weapon item delete on POST.
-exports.weapon_delete_post = async (req, res, next) => {
-  try {
-    await Weapon.findByIdAndRemove(req.params.id);
-    return res.status(200).json();
-  } catch (e) {
-    console.log("error");
-    return res.status(400).json({ error: "User could not be removed" });
-  }
-};
-*/
