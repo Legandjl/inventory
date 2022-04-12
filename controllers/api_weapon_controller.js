@@ -107,8 +107,8 @@ exports.weapon_update_put = [
       name: req.body.name,
       val: req.body.val,
       weight: req.body.weight,
-      dam: req.body.damage,
-      condition: req.body.condition, //genre is an array of genre ids
+      dam: req.body.dam,
+      condition: req.body.condition,
       category: cat,
       _id: req.params.id,
     });
@@ -120,7 +120,7 @@ exports.weapon_update_put = [
         await Weapon.findByIdAndUpdate(req.params.id, weapon);
         return res.status(200).json({ id: req.params.id });
       } catch (e) {
-        next(e);
+        res.send({ errors: e, message: "Something went wrong" });
       }
     }
   },
