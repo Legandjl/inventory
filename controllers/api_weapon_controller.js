@@ -51,14 +51,14 @@ exports.weapon_create_post = [
     .isInt({ min: 1, max: 99 })
     .escape(),
 
-  async (req, res, next) => {
+  async (req, res) => {
     const errors = validationResult(req);
     const cat = await Category.findOne({ name: "Weapons" });
     const weapon = new Weapon({
       name: req.body.name,
       val: req.body.val,
       weight: req.body.weight,
-      dam: req.body.damage,
+      dam: req.body.dam,
       condition: req.body.condition, //genre is an array of genre ids
       category: cat,
     });

@@ -30,7 +30,6 @@ exports.misc_delete_post = async (req, res, next) => {
     await Misc.findByIdAndRemove(req.params.id);
     return res.status(200).json();
   } catch (e) {
-    console.log("error");
     return res.status(400).json({ error: "Misc could not be removed" });
   }
 };
