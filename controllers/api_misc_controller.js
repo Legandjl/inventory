@@ -92,6 +92,7 @@ exports.misc_update_put = [
       val: req.body.val,
       weight: req.body.weight,
       category: cat,
+      _id: req.params.id,
     });
 
     if (!errors.isEmpty()) {

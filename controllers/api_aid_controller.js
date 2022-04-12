@@ -116,6 +116,7 @@ exports.aid_update_put = [
       effects: req.body.effects,
       tag: req.body.tag,
       category: cat,
+      _id: req.params.id,
     });
 
     if (!errors.isEmpty()) {
