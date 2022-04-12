@@ -26,6 +26,8 @@ router.get("/armor/:id", armorController.armor_detail);
 
 router.post("/armor", armorController.armor_create_post);
 
+router.put("/armor/:id", armorController.armor_update_put);
+
 router.delete("/armor/:id", armorController.armor_delete_post);
 
 // misc CRUD
@@ -36,6 +38,8 @@ router.get("/misc/:id", miscController.misc_detail);
 
 router.post("/misc", miscController.misc_create_post);
 
+router.put("/misc/:id", miscController.misc_update_put);
+
 router.delete("/misc/:id", miscController.misc_delete_post);
 
 // aid CRUD
@@ -45,6 +49,8 @@ router.get("/aid", aidController.aid);
 router.get("/aid/:id", aidController.aid_detail);
 
 router.post("/aid", aidController.aid_create_post);
+
+router.put("/aid/:id", aidController.aid_update_put);
 
 router.delete("/aid/:id", aidController.aid_delete_post);
 

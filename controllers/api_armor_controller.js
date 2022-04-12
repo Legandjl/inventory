@@ -97,6 +97,14 @@ exports.armor_create_post = [
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 999 })
     .escape(),
+  body("effects", "effects must be specified and in the range 1 - 999")
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  body("condition", "condition must be specified and in the range 1 - 999")
+    .trim()
+    .isInt({ min: 1, max: 100 })
+    .escape(),
 
   async (req, res) => {
     const errors = validationResult(req);
@@ -118,6 +126,53 @@ exports.armor_create_post = [
         res.send({ data: armor, message: "Armor created" });
       } catch (e) {
         res.json({ error: e });
+      }
+    }
+  },
+];
+
+exports.armor_update_put = [
+  body("name", "name must be specified").trim().isLength({ min: 1 }).escape(),
+  body("val", "val must be specified and in the range 1 - 9999")
+    .trim()
+    .isLength({ min: 1 })
+    .isInt({ min: 1, max: 9999 })
+    .escape(),
+  body("weight", "weight must be specified and in the range 1 - 999")
+    .trim()
+    .isLength({ min: 1 })
+    .isInt({ min: 1, max: 999 })
+    .escape(),
+  body("effects", "effects must be specified and in the range 1 - 999")
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  body("condition", "condition must be specified and in the range 1 - 999")
+    .trim()
+    .isInt({ min: 1, max: 100 })
+    .escape(),
+
+  async (req, res) => {
+    const errors = validationResult(req);
+    const cat = await Category.findOne({ name: "Armor" });
+    const armor = new Armor({
+      name: req.body.name,
+      val: req.body.val,
+      weight: req.body.weight,
+      effects: req.body.effects, //genre is an array of genre ids
+      condition: req.body.condition,
+      category: cat,
+      _id: req.params.id,
+    });
+
+    if (!errors.isEmpty()) {
+      res.send(errors);
+    } else {
+      try {
+        await Armor.findByIdAndUpdate(req.params.id, armor);
+        return res.status(200).json({ id: req.params.id });
+      } catch (e) {
+        res.send({ errors: e, message: "Something went wrong" });
       }
     }
   },

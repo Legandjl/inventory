@@ -1,4 +1,3 @@
-const async = require("async");
 const Weapon = require("../models/weapon");
 const { body, validationResult } = require("express-validator");
 const Category = require("../models/category");
@@ -127,7 +126,7 @@ exports.weapon_update_put = [
 ];
 
 // Handle weapon item delete on POST.
-exports.weapon_delete_post = async (req, res, next) => {
+exports.weapon_delete_post = async (req, res) => {
   try {
     await Weapon.findByIdAndRemove(req.params.id);
     return res.status(200).json();
