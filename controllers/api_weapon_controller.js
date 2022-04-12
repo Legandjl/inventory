@@ -100,7 +100,7 @@ exports.weapon_update_put = [
     .isInt({ min: 1, max: 99 })
     .escape(),
 
-  async (req, res, next) => {
+  async (req, res) => {
     const errors = validationResult(req);
     const cat = await Category.findOne({ name: "Weapons" });
     const weapon = new Weapon({
