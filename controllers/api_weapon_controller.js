@@ -44,10 +44,10 @@ exports.weapon_create_post = [
     .isInt({ min: 1, max: 99 })
     .escape(),
 
-  body("damage", "damage must be specified and in the range 1 - 999")
+  body("dam", "dam must be specified, and in the range 1 - 999")
     .trim()
     .isLength({ min: 1 })
-    .isInt({ min: 1, max: 99 })
+    .isInt({ min: 1, max: 999 })
     .escape(),
 
   async (req, res) => {
@@ -93,7 +93,7 @@ exports.weapon_update_put = [
     .isInt({ min: 1, max: 99 })
     .escape(),
 
-  body("damage", "damage must be specified and in the range 1 - 999")
+  body("dam", "dam must be specified and in the range 1 - 999")
     .trim()
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 99 })
