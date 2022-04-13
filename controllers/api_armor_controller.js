@@ -123,7 +123,7 @@ exports.armor_create_post = [
     } else {
       try {
         await armor.save();
-        return res.status(200).json({ id: req.params.id });
+        return res.status(200).json({ id: armor._id });
       } catch (e) {
         res.json({ error: e });
       }

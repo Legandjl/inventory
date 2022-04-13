@@ -66,7 +66,7 @@ exports.weapon_create_post = [
     } else {
       try {
         await weapon.save();
-        return res.status(200).json({ id: req.params.id });
+        return res.status(200).json({ id: weapon._id });
       } catch (e) {
         res.json({ error: e });
       }
