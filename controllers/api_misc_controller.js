@@ -62,7 +62,7 @@ exports.misc_create_post = [
     } else {
       try {
         await misc.save();
-        res.send({ data: misc, message: "Misc created" });
+        return res.status(200).json({ id: req.params.id });
       } catch (e) {
         res.json({ error: e });
       }

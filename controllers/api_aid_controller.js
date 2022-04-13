@@ -75,7 +75,7 @@ exports.aid_create_post = [
     } else {
       try {
         await aid.save();
-        res.send({ data: aid, message: "Aid created" });
+        return res.status(200).json({ id: req.params.id });
       } catch (e) {
         res.json({ error: e });
       }
