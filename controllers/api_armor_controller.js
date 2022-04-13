@@ -86,22 +86,22 @@ exports.armor_delete_post = async (req, res, next) => {
 
 // Handle weapon item create on POST.
 exports.armor_create_post = [
-  body("name", "name must be specified").trim().isLength({ min: 1 }).escape(),
-  body("val", "val must be specified and in the range 1 - 9999")
+  body("name", "Name must be specified").trim().isLength({ min: 1 }).escape(),
+  body("val", "Val must be specified and in the range 1 - 9999")
     .trim()
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 9999 })
     .escape(),
-  body("weight", "weight must be specified and in the range 1 - 999")
+  body("weight", "Weight must be specified and in the range 1 - 999")
     .trim()
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 999 })
     .escape(),
-  body("effects", "effects must be specified and in the range 1 - 999")
+  body("effects", "Effects must be specified and in the range 1 - 999")
     .trim()
     .isLength({ min: 1 })
     .escape(),
-  body("condition", "condition must be specified and in the range 1 - 999")
+  body("condition", "Condition must be specified and in the range 1 - 999")
     .trim()
     .isInt({ min: 1, max: 100 })
     .escape(),
@@ -119,7 +119,7 @@ exports.armor_create_post = [
       _id: req.params.id,
     });
     if (!errors.isEmpty()) {
-      res.json(errors);
+      res.status(400).json(errors.array({ onlyFirstError: true }));
     } else {
       try {
         await armor.save();
@@ -132,22 +132,22 @@ exports.armor_create_post = [
 ];
 
 exports.armor_update_put = [
-  body("name", "name must be specified").trim().isLength({ min: 1 }).escape(),
-  body("val", "val must be specified and in the range 1 - 9999")
+  body("name", "Name must be specified").trim().isLength({ min: 1 }).escape(),
+  body("val", "Val must be specified and in the range 1 - 9999")
     .trim()
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 9999 })
     .escape(),
-  body("weight", "weight must be specified and in the range 1 - 999")
+  body("weight", "Weight must be specified and in the range 1 - 999")
     .trim()
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 999 })
     .escape(),
-  body("effects", "effects must be specified and in the range 1 - 999")
+  body("effects", "Effects must be specified and in the range 1 - 999")
     .trim()
     .isLength({ min: 1 })
     .escape(),
-  body("condition", "condition must be specified and in the range 1 - 999")
+  body("condition", "Condition must be specified and in the range 1 - 999")
     .trim()
     .isInt({ min: 1, max: 100 })
     .escape(),
@@ -166,7 +166,7 @@ exports.armor_update_put = [
     });
 
     if (!errors.isEmpty()) {
-      res.send(errors);
+      res.status(400).json(errors.array({ onlyFirstError: true }));
     } else {
       try {
         await Armor.findByIdAndUpdate(req.params.id, armor);

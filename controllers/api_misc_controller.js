@@ -36,13 +36,13 @@ exports.misc_delete_post = async (req, res, next) => {
 
 // Handle weapon item create on POST.
 exports.misc_create_post = [
-  body("name", "name must be specified").trim().isLength({ min: 1 }).escape(),
-  body("val", "val must be specified and in the range 1 - 9999")
+  body("name", "Name must be specified").trim().isLength({ min: 1 }).escape(),
+  body("val", "Val must be specified and in the range 1 - 9999")
     .trim()
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 9999 })
     .escape(),
-  body("weight", "weight must be specified and in the range 1 - 999")
+  body("weight", "Weight must be specified and in the range 1 - 999")
     .trim()
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 999 })
@@ -58,7 +58,7 @@ exports.misc_create_post = [
       category: cat,
     });
     if (!errors.isEmpty()) {
-      res.json(errors);
+      res.status(400).json(errors.array({ onlyFirstError: true }));
     } else {
       try {
         await misc.save();
@@ -72,13 +72,13 @@ exports.misc_create_post = [
 
 // Handle weapon item update on POST.
 exports.misc_update_put = [
-  body("name", "name must be specified").trim().isLength({ min: 1 }).escape(),
-  body("val", "val must be specified and in the range 1 - 9999")
+  body("name", "Name must be specified").trim().isLength({ min: 1 }).escape(),
+  body("val", "Val must be specified and in the range 1 - 9999")
     .trim()
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 9999 })
     .escape(),
-  body("weight", "weight must be specified and in the range 1 - 999")
+  body("weight", "Weight must be specified and in the range 1 - 999")
     .trim()
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 999 })
@@ -96,7 +96,7 @@ exports.misc_update_put = [
     });
 
     if (!errors.isEmpty()) {
-      res.send(errors);
+      res.status(400).json(errors.array({ onlyFirstError: true }));
     } else {
       try {
         await Misc.findByIdAndUpdate(req.params.id, misc);

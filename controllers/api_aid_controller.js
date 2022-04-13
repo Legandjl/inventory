@@ -37,24 +37,24 @@ exports.aid_delete_post = async (req, res, next) => {
 
 // Handle weapon item create on POST.
 exports.aid_create_post = [
-  body("name", "name must be specified").trim().isLength({ min: 1 }).escape(),
-  body("val", "val must be specified and in the range 1 - 9999")
+  body("name", "Name must be specified").trim().isLength({ min: 1 }).escape(),
+  body("val", "Val must be specified and in the range 1 - 9999")
     .trim()
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 9999 })
     .escape(),
-  body("weight", "weight must be specified and in the range 1 - 999")
+  body("weight", "Weight must be specified and in the range 1 - 999")
     .trim()
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 999 })
     .escape(),
 
-  body("tag", "tag must be specified")
+  body("tag", "Tag must be specified")
     .trim()
     .isLength({ min: 1, max: 4 })
     .escape(),
 
-  body("effects", "effects must be specified")
+  body("effects", "Effects must be specified")
     .trim()
     .isLength({ min: 1 })
     .escape(),
@@ -71,7 +71,7 @@ exports.aid_create_post = [
       category: cat,
     });
     if (!errors.isEmpty()) {
-      res.json(errors);
+      res.status(400).json(errors.array({ onlyFirstError: true }));
     } else {
       try {
         await aid.save();
@@ -84,24 +84,24 @@ exports.aid_create_post = [
 ];
 
 exports.aid_update_put = [
-  body("name", "name must be specified").trim().isLength({ min: 1 }).escape(),
-  body("val", "val must be specified and in the range 1 - 9999")
+  body("name", "Name must be specified").trim().isLength({ min: 1 }).escape(),
+  body("val", "Val must be specified and in the range 1 - 9999")
     .trim()
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 9999 })
     .escape(),
-  body("weight", "weight must be specified and in the range 1 - 999")
+  body("weight", "Weight must be specified and in the range 1 - 999")
     .trim()
     .isLength({ min: 1 })
     .isInt({ min: 1, max: 999 })
     .escape(),
 
-  body("tag", "tag must be specified")
+  body("tag", "Tag must be specified")
     .trim()
     .isLength({ min: 1, max: 4 })
     .escape(),
 
-  body("effects", "effects must be specified")
+  body("effects", "Effects must be specified and less than 30 chars")
     .trim()
     .isLength({ min: 1 })
     .escape(),
@@ -120,7 +120,7 @@ exports.aid_update_put = [
     });
 
     if (!errors.isEmpty()) {
-      res.send(errors);
+      res.status(400).json(errors.array({ onlyFirstError: true }));
     } else {
       try {
         await Aid.findByIdAndUpdate(req.params.id, aid);
