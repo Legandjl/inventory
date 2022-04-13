@@ -58,7 +58,7 @@ exports.misc_create_post = [
       category: cat,
     });
     if (!errors.isEmpty()) {
-      res.status(400).json(errors.array({ onlyFirstError: true }));
+      res.status(400).json({ errors: errors.array({ onlyFirstError: true }) });
     } else {
       try {
         await misc.save();
@@ -96,7 +96,7 @@ exports.misc_update_put = [
     });
 
     if (!errors.isEmpty()) {
-      res.status(400).json(errors.array({ onlyFirstError: true }));
+      res.status(400).json({ errors: errors.array({ onlyFirstError: true }) });
     } else {
       try {
         await Misc.findByIdAndUpdate(req.params.id, misc);

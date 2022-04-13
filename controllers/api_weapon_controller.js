@@ -62,7 +62,7 @@ exports.weapon_create_post = [
     });
     if (!errors.isEmpty()) {
       console.log(errors);
-      res.status(400).json(errors.array({ onlyFirstError: true }));
+      res.status(400).json({ errors: errors.array({ onlyFirstError: true }) });
     } else {
       try {
         await weapon.save();
@@ -114,7 +114,7 @@ exports.weapon_update_put = [
 
     if (!errors.isEmpty()) {
       console.log(errors);
-      res.status(400).json(errors.array({ onlyFirstError: true }));
+      res.status(400).json({ errors: errors.array({ onlyFirstError: true }) });
     } else {
       try {
         await Weapon.findByIdAndUpdate(req.params.id, weapon);

@@ -71,7 +71,7 @@ exports.aid_create_post = [
       category: cat,
     });
     if (!errors.isEmpty()) {
-      res.status(400).json(errors.array({ onlyFirstError: true }));
+      res.status(400).json({ errors: errors.array({ onlyFirstError: true }) });
     } else {
       try {
         await aid.save();
@@ -120,7 +120,7 @@ exports.aid_update_put = [
     });
 
     if (!errors.isEmpty()) {
-      res.status(400).json(errors.array({ onlyFirstError: true }));
+      res.status(400).json({ errors: errors.array({ onlyFirstError: true }) });
     } else {
       try {
         await Aid.findByIdAndUpdate(req.params.id, aid);
