@@ -17,3 +17,7 @@ What I learnt from this project:
 
 I enjoyed using the MVC pattern, and found it to be an intuitive way to structure applications. I learnt how schemas and models fit together, and how to set up and query a database using mongoose. I feel much more confident now in terms of understanding how the front and backend fit together.
 
+Live demo: 
+
+https://frozen-springs-98647.herokuapp.com/inventory/weapon/6237376616b2daefa30e3ce0
+
